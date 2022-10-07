@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--id是主名， name是别名; getBean时两者皆可使用-->
+    <bean id="UserDao" name = "dao  dao1 dao2" class="org.dao.Iml.UserDao" >
+        <property name="array" >
+            <array>
+                <value>1</value>
+                <value>2</value>
+                <value>3</value>
+            </array>
+        </property>
+        <property name="list" >
+            <list>
+                <value>it</value>
+                <value>java</value>
+                <value>3</value>
+            </list>
+        </property>
+        <property name="set" >
+            <set>
+                <value>it</value>
+                <value>java</value>
+                <value>java</value>
+                <value>3</value>
+            </set>
+        </property>
+        <property name="map" >
+            <map>
+                <entry key="1" value="111"/>
+                <entry key="2" value="222"/>
+                <entry key="3" value="333"/>
+            </map>
+        </property>
+        <property name="properties" >
+            <props>
+                <prop key="1">111</prop>
+                <prop key="2">222</prop>
+                <prop key="3">333</prop>
+            </props>
+        </property>
+    </bean>
+    <bean id="UserService"  name ="sssss" scope="prototype" class="org.test.UserService" autowire="byType">
+    </bean>
+
+    <!-- 1.构造方法实例化bean
+    <bean id="UserDAO" name = "dao  dao1 dao2" class="org.dao.Iml.UserDao"/>-->
+    <!-- 2.静态工厂方法实例化bean
+    <bean id ="userDao" class="org.factory.UserDaoFactory" factory-method="getUserdao"/>-->
+    <!--3.实例工厂与FactoryBean
+    <bean id="UserDaoFactory" class="org.factory.UserDaoFactory"/>
+    <bean id="UserDao" factory-method="getUserdao" factory-bean="UserDaoFactory"/>-->
+    <!--4.使用FactoryBean实例化
+    <bean id="UserDao" class="org.factory.UserDaoFactoryBean"/>-->
+
+</beans>
